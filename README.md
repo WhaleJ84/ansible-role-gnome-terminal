@@ -1,10 +1,14 @@
-Gnome-Terminal
+gnome-terminal
 =========
 
-Installs and configures Gnome-Terminal for the user.
+Installs and configures gnome-terminal for the user.
 
 Requirements
 ------------
+
+The following roles are required:
+
+- whalej84.pip
 
 The following collections are required:
 
@@ -19,6 +23,10 @@ To include this role in your `requirements.yml` file, add the following list ite
 roles:
   - name: whalej84.gnome-terminal
     src: https://github.com/WhaleJ84/ansible-role-gnome-terminal.git
+    scm: git
+
+  - name: whalej84.pip
+    src: https://github.com/WhaleJ84/ansible-role-pip.git
     scm: git
 
 collections:
