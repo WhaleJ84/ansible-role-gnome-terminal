@@ -47,7 +47,7 @@ galaxy_info:
     #       Maximum 20 tags per role.
 
 dependencies:
-  - whalej84.pip
+  - whalej84.psutil
 
 collections:
   - community.general

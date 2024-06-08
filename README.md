@@ -8,7 +8,7 @@ Requirements
 
 The following roles are required:
 
-- whalej84.pip
+- whalej84.psutil
 
 The following collections are required:
 
@@ -25,8 +25,8 @@ roles:
     src: https://github.com/WhaleJ84/ansible-role-gnome-terminal.git
     scm: git
 
-  - name: whalej84.pip
-    src: https://github.com/WhaleJ84/ansible-role-pip.git
+  - name: whalej84.psutil
+    src: https://github.com/WhaleJ84/ansible-role-psutil.git
     scm: git
 
 collections:
