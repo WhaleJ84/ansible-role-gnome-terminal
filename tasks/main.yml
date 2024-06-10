@@ -1,0 +1,82 @@
+---
+- name: CONFIGURE | Gnome-Terminal
+  tags:
+    - configure
+  block:
+    - name: CONFIGURE | Get terminal profile ID
+      ansible.builtin.command:
+        cmd: dconf list "/org/gnome/terminal/legacy/profiles:/"
+      register: dconf_profiles
+      changed_when: False
+
+    - name: CONFIGURE | Set first profile ID as target if it exists
+      ansible.builtin.set_fact:
+        profile_id: "{{ dconf_profiles.stdout_lines[0] }}"
+      when: dconf_profiles.stdout != ""
+      changed_when: False
+
+    - name: CONFIGURE | Set default profile ID as target
+      ansible.builtin.set_fact:
+        profile_id: ":b1dcc9dd-5262-4d8d-a863-c897e6d979b9/"
+      when: dconf_profiles.stdout == ""
+      changed_when: false
+
+    - name: DEBUG | Display profile ID
+      ansible.builtin.debug:
+        msg: "{{ profile_id }}"
+
+    - name: CONFIGURE | Set profile name to match user ID
+      community.general.dconf:
+        key: "{{ terminal_path }}{{ profile_id }}visible-name"
+        value: "'{{ ansible_user_id }}'"
+
+    - name: CONFIGURE | Set audible bell value
+      community.general.dconf:
+        key: "{{ terminal_path }}{{ profile_id }}audible-bell"
+        value: "{{ audible_bell }}"
+
+    - name: CONFIGURE | Set background color
+      community.general.dconf:
+        key: "{{ terminal_path }}{{ profile_id }}background-color"
+        value: "{{ background_color }}"
+      when: background_color is defined
+
+    - name: CONFIGURE | Set bold color
+      community.general.dconf:
+        key: "{{ terminal_path }}{{ profile_id }}bold-color"
+        value: "{{ bold_color }}"
+      when: bold_color is defined
+
+    - name: CONFIGURE | Set cursor background color
+      community.general.dconf:
+        key: "{{ terminal_path }}{{ profile_id }}cursor-background-color"
+        value: "{{ cursor_background_color }}"
+      when: cursor_background_color is defined
+
+    - name: CONFIGURE | Set cursor foreground color
+      community.general.dconf:
+        key: "{{ terminal_path }}{{ profile_id }}cursor-foreground-color"
+        value: "{{ cursor_foreground_color }}"
+      when: cursor_foreground_color is defined
+
+    - name: CONFIGURE | Set foreground color
+      community.general.dconf:
+        key: "{{ terminal_path }}{{ profile_id }}foreground-color"
+        value: "{{ foreground_color }}"
+      when: foreground_color is defined
+
+    - name: CONFIGURE | Set palette
+      community.general.dconf:
+        key: "{{ terminal_path }}{{ profile_id }}palette"
+        value: "{{ palette }}"
+      when: palette is defined
+
+    - name: CONFIGURE | Set theme color usage
+      community.general.dconf:
+        key: "{{ terminal_path }}{{ profile_id }}use-theme-colors"
+        value: "{{ use_theme_colors }}"
+
+    - name: CONFIGURE | Set cursor shape
+      community.general.dconf:
+        key: "{{ terminal_path}}{{ profile_id }}cursor-shape"
+        value: "'{{ cursor_shape }}'"
