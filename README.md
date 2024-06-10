@@ -47,6 +47,7 @@ Role Variables
 | palette | string | An array of sixteen hexadecimal values to state the normal and bright variants of the black, red, green, yellow, blue, magenta, cyan, and white colors of the terminal should be | |
 | use\_theme\_colors | string | A lowercase boolean value of [true, false] to state whether the terminal should use system theme colors | "true" |
 | cursor\_shape | string | A value of [block, ibeam, underline] to state what shape the cursor should be | "block" |
+| theme\_variant | string | A lowercase value of [dark, light, system] to state what theme the terminal shoud use | "dark" |
 
 Example Playbook
 ----------------
@@ -87,6 +88,7 @@ This example playbook shows how I would use this role, with custom variables to 
         palette: "[{{ black }}, {{ red }}, {{ green }}, {{ yellow }}, {{ blue }}, {{ magenta }}, {{ cyan }}, {{ white }}, {{ bright_black }}, {{ bright_red }}, {{ bright_green }}, {{ bright_yellow }}, {{ bright_blue }}, {{ bright_magenta }}, {{ bright_cyan }}, {{ bright_white }}]"
         use_theme_colors: "false"
         cursor_shape: "ibeam"
+        theme_variant: "system"
       tags: [ gnome-terminal ]
 ```
 
