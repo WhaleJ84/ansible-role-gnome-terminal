@@ -1,5 +1,6 @@
 ---
-terminal_path: "/org/gnome/terminal/legacy/profiles:/"
+terminal_path: "/org/gnome/terminal/legacy/"
 audible_bell: "true"
 use_theme_colors: "true"
 cursor_shape: "block"
+theme_variant: "dark"
