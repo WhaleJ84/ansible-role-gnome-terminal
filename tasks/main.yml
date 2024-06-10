@@ -27,56 +27,61 @@
 
     - name: CONFIGURE | Set profile name to match user ID
       community.general.dconf:
-        key: "{{ terminal_path }}{{ profile_id }}visible-name"
+        key: "{{ terminal_path }}profiles:/{{ profile_id }}visible-name"
         value: "'{{ ansible_user_id }}'"
 
     - name: CONFIGURE | Set audible bell value
       community.general.dconf:
-        key: "{{ terminal_path }}{{ profile_id }}audible-bell"
+        key: "{{ terminal_path }}profiles:/{{ profile_id }}audible-bell"
         value: "{{ audible_bell }}"
 
     - name: CONFIGURE | Set background color
       community.general.dconf:
-        key: "{{ terminal_path }}{{ profile_id }}background-color"
+        key: "{{ terminal_path }}profiles:/{{ profile_id }}background-color"
         value: "{{ background_color }}"
       when: background_color is defined
 
     - name: CONFIGURE | Set bold color
       community.general.dconf:
-        key: "{{ terminal_path }}{{ profile_id }}bold-color"
+        key: "{{ terminal_path }}profiles:/{{ profile_id }}bold-color"
         value: "{{ bold_color }}"
       when: bold_color is defined
 
     - name: CONFIGURE | Set cursor background color
       community.general.dconf:
-        key: "{{ terminal_path }}{{ profile_id }}cursor-background-color"
+        key: "{{ terminal_path }}profiles:/{{ profile_id }}cursor-background-color"
         value: "{{ cursor_background_color }}"
       when: cursor_background_color is defined
 
     - name: CONFIGURE | Set cursor foreground color
       community.general.dconf:
-        key: "{{ terminal_path }}{{ profile_id }}cursor-foreground-color"
+        key: "{{ terminal_path }}profiles:/{{ profile_id }}cursor-foreground-color"
         value: "{{ cursor_foreground_color }}"
       when: cursor_foreground_color is defined
 
     - name: CONFIGURE | Set foreground color
       community.general.dconf:
-        key: "{{ terminal_path }}{{ profile_id }}foreground-color"
+        key: "{{ terminal_path }}profiles:/{{ profile_id }}foreground-color"
         value: "{{ foreground_color }}"
       when: foreground_color is defined
 
     - name: CONFIGURE | Set palette
       community.general.dconf:
-        key: "{{ terminal_path }}{{ profile_id }}palette"
+        key: "{{ terminal_path }}profiles:/{{ profile_id }}palette"
         value: "{{ palette }}"
       when: palette is defined
 
     - name: CONFIGURE | Set theme color usage
       community.general.dconf:
-        key: "{{ terminal_path }}{{ profile_id }}use-theme-colors"
+        key: "{{ terminal_path }}profiles:/{{ profile_id }}use-theme-colors"
         value: "{{ use_theme_colors }}"
 
     - name: CONFIGURE | Set cursor shape
       community.general.dconf:
-        key: "{{ terminal_path}}{{ profile_id }}cursor-shape"
+        key: "{{ terminal_path }}profiles:/{{ profile_id }}cursor-shape"
         value: "'{{ cursor_shape }}'"
+
+    - name: CONFIGURE | Set theme variant
+      community.general.dconf:
+        key: "{{ terminal_path }}theme-variant"
+        value: "'{{ theme_variant }}'"
