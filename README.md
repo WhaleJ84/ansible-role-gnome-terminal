@@ -46,7 +46,7 @@ Role Variables
 | foreground\_color | string | A hexadecimal value to state what color the foreground should be | |
 | palette | string | An array of sixteen hexadecimal values to state the normal and bright variants of the black, red, green, yellow, blue, magenta, cyan, and white colors of the terminal should be | |
 | use\_theme\_colors | string | A lowercase boolean value of [true, false] to state whether the terminal should use system theme colors | "true" |
-| cursor\_shape | string | A value of [block, ibeam, underscore] to state what shape the cursor should be | "block" |
+| cursor\_shape | string | A value of [block, ibeam, underline] to state what shape the cursor should be | "block" |
 
 Example Playbook
 ----------------
