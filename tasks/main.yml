@@ -85,3 +85,21 @@
       community.general.dconf:
         key: "{{ terminal_path }}theme-variant"
         value: "'{{ theme_variant }}'"
+
+    - name: CONFIGURE | Set custom command if set
+      community.general.dconf:
+        key: "{{ terminal_path }}profiles:/{{ profile_id }}custom-command"
+        value: "'{{ custom_command }}'"
+      when: custom_command is defined
+
+    - name: CONFIGURE | Enable custom command when set
+      community.general.dconf:
+        key: "{{ terminal_path }}profiles:/{{ profile_id }}use-custom-command"
+        value: "true"
+      when: custom_command is defined
+
+    - name: CONFIGURE | Ensure custom command is disabled when unset
+      community.general.dconf:
+        key: "{{ terminal_path }}profiles:/{{ profile_id }}use-custom-command"
+        value: "false"
+      when: custom_command is undefined
