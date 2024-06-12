@@ -81,6 +81,11 @@
         key: "{{ terminal_path }}profiles:/{{ profile_id }}cursor-shape"
         value: "'{{ cursor_shape }}'"
 
+    - name: CONFIGURE | Set scrollbar status
+      community.general.dconf:
+        key: "{{ terminal_path }}profiles:/{{ profile_id }}scrollbar-policy"
+        value: "'{{ show_scrollbar }}'"
+
     - name: CONFIGURE | Set theme variant
       community.general.dconf:
         key: "{{ terminal_path }}theme-variant"
