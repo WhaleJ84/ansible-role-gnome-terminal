@@ -48,6 +48,7 @@ Role Variables
 | use\_theme\_colors | string | A lowercase boolean value of [true, false] to state whether the terminal should use system theme colors | "true" |
 | cursor\_shape | string | A value of [block, ibeam, underline] to state what shape the cursor should be | "block" |
 | theme\_variant | string | A lowercase value of [dark, light, system] to state what theme the terminal shoud use | "dark" |
+| custom\_command | string | A value to state what command you want to run when a new terminal is opened | |
 
 Example Playbook
 ----------------
@@ -89,6 +90,7 @@ This example playbook shows how I would use this role, with custom variables to 
         use_theme_colors: "false"
         cursor_shape: "ibeam"
         theme_variant: "system"
+        custom_command: "tmux"
       tags: [ gnome-terminal ]
 ```
 
